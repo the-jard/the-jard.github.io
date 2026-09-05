@@ -24,9 +24,25 @@
 
       @font-face {
         font-family: "Archivo";
-        src: url("./assets/fonts/Archivo-Black.otf") format("opentype");
+        src: url("./assets/fonts/Archivo-Light.otf") format("opentype");
         font-style: normal;
-        font-weight: 900;
+        font-weight: 300;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Archivo";
+        src: url("./assets/fonts/Archivo-Medium.otf") format("opentype");
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Archivo";
+        src: url("./assets/fonts/Archivo-SemiBold.otf") format("opentype");
+        font-style: normal;
+        font-weight: 600;
         font-display: swap;
       }
 
@@ -54,75 +70,89 @@
       }
 
       main {
+        display: flex;
         width: 100%;
         min-height: 100vh;
         min-height: 100svh;
-        padding: clamp(3.5rem, 12vh, 6rem) clamp(1.5rem, 5vw, 4rem) 3rem;
+        padding: clamp(3rem, 9vh, 5rem) clamp(2.5rem, 6.8vw, 6.5rem)
+          clamp(2rem, 4.5vh, 2.75rem);
       }
 
       .coming-soon {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: min(100%, 60rem);
-        margin: 0 auto;
-        text-align: center;
+        display: grid;
+        grid-template-rows: 1fr auto;
+        gap: clamp(3rem, 7vh, 6.5rem);
+        width: 100%;
+        min-width: 0;
       }
 
       .logo {
         display: block;
-        width: auto;
-        height: clamp(17rem, 41vh, 20.5rem);
-        max-width: min(70vw, 14.5rem);
-        object-fit: contain;
+        width: 100%;
+        height: auto;
       }
 
-      h1 {
+      .spread-line {
+        display: grid;
+        grid-template-columns: repeat(var(--characters), minmax(0, 1fr));
+        width: 100%;
         margin: 0;
-        font-size: clamp(5rem, 11.3vw, 10rem);
-        font-weight: 400;
-        line-height: 0.95;
-        letter-spacing: -0.065em;
+        color: inherit;
+        font: inherit;
+        line-height: inherit;
+        text-decoration: none;
+        text-transform: uppercase;
         white-space: nowrap;
+      }
+
+      .spread-line > span {
+        min-width: 0;
+        text-align: center;
+      }
+
+      .spread-line > span:first-child {
+        text-align: left;
+      }
+
+      .spread-line > span:last-child {
+        text-align: right;
       }
 
       .details {
         display: grid;
-        grid-template-columns: 14.5rem max-content;
-        align-items: center;
-        gap: 2.4rem;
-        width: max-content;
-        max-width: 100%;
-        margin-top: clamp(4.25rem, 9vh, 5.25rem);
-      }
-
-      .details h2 {
-        margin: 0;
-        font-size: 3rem;
-        font-weight: 900;
-        line-height: 1;
-        letter-spacing: -0.025em;
+        grid-template-columns: 44% 50%;
+        align-items: start;
+        align-self: center;
+        justify-content: space-between;
+        width: min(100%, 50.5rem);
+        margin: 0 auto;
       }
 
       .details-copy {
+        padding-top: 8%;
+        font-size: clamp(0.78rem, 1.18vw, 1.125rem);
+        font-weight: 300;
+        line-height: 1.35;
         text-align: left;
       }
 
-      .details address {
-        margin-top: 0.25rem;
-        font-size: 1.6rem;
-        font-style: normal;
-        line-height: 1.3;
+      .details-title {
+        margin: 0 0 0.72em;
+        font-size: 3.3em;
+        font-weight: 500;
+        line-height: 0.92;
       }
 
-      .contact-list {
-        display: grid;
-        gap: 0.15rem;
-        margin: 1.55rem 0 0;
-        padding: 0;
-        font-size: 1.55rem;
-        line-height: 1.35;
-        list-style: none;
+      .details-line {
+        margin-bottom: 0.62em;
+      }
+
+      .details-line.address-last {
+        margin-bottom: 1.15em;
+      }
+
+      .details-line .label-character {
+        font-weight: 600;
       }
 
       a {
@@ -136,34 +166,65 @@
         text-decoration-thickness: 0.14em;
       }
 
+      .visit-booking {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5em;
+        margin-top: 1.8em;
+        font-size: 1.05em;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      .coming-soon-title {
+        font-size: clamp(2.8rem, 4.3vw, 4.1rem);
+        font-weight: 500;
+        line-height: 1;
+      }
+
+      .details-title,
+      .coming-soon-title {
+        display: flex;
+        justify-content: space-between;
+      }
+
       @media (max-width: 42rem) {
         main {
-          padding-top: 3rem;
+          padding: 2rem 1.5rem 1.75rem;
         }
 
-        h1 {
-          font-size: clamp(3.25rem, 14vw, 5.5rem);
+        .coming-soon {
+          grid-template-rows: auto auto;
+          gap: clamp(3rem, 10vh, 5rem);
         }
 
         .details {
           grid-template-columns: 1fr;
-          justify-items: center;
           gap: 2rem;
-          width: 100%;
-          margin-top: 3.5rem;
+          width: min(100%, 31rem);
+        }
+
+        .logo {
+          width: min(58vw, 15rem);
         }
 
         .details-copy {
           width: min(100%, 25rem);
+          padding-top: 0;
+          font-size: clamp(0.72rem, 3vw, 0.95rem);
         }
 
-        .details h2 {
-          font-size: clamp(2.25rem, 11vw, 3rem);
+        .details-title {
+          font-size: clamp(2.7em, 11vw, 3.3em);
         }
 
-        .details address,
-        .contact-list {
-          font-size: clamp(1.05rem, 5.5vw, 1.4rem);
+        .visit-booking {
+          gap: 0.35em;
+          font-size: 1em;
+        }
+
+        .coming-soon-title {
+          font-size: clamp(1.7rem, 7.6vw, 2.8rem);
         }
       }
     </style>
@@ -172,8 +233,6 @@
   <body>
     <main>
       <section class="coming-soon" aria-labelledby="coming-soon-title">
-        <h1 id="coming-soon-title">Coming Soon!</h1>
-
         <div class="details">
           <img
             class="logo"
@@ -184,33 +243,97 @@
           />
 
           <div class="details-copy">
-            <h2>THE JARD</h2>
+            <h2
+              class="spread-line details-title"
+              style="--characters: 8"
+              aria-label="THE JARD"
+            >
+              <span aria-hidden="true">T</span>
+              <span aria-hidden="true">H</span>
+              <span aria-hidden="true">E</span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true">J</span>
+              <span aria-hidden="true">A</span>
+              <span aria-hidden="true">R</span>
+              <span aria-hidden="true">D</span>
+            </h2>
 
-            <address>
-              Strada della Giardina 12<br />
-              10023 Chieri (TO), Italy
-            </address>
+            <div
+              class="spread-line details-line"
+              style="--characters: 24"
+              aria-label="STRADA DELLA GIARDINA 12"
+            >
+              <span aria-hidden="true">S</span><span aria-hidden="true">T</span><span aria-hidden="true">R</span><span aria-hidden="true">A</span><span aria-hidden="true">D</span><span aria-hidden="true">A</span><span aria-hidden="true"></span><span aria-hidden="true">D</span><span aria-hidden="true">E</span><span aria-hidden="true">L</span><span aria-hidden="true">L</span><span aria-hidden="true">A</span><span aria-hidden="true"></span><span aria-hidden="true">G</span><span aria-hidden="true">I</span><span aria-hidden="true">A</span><span aria-hidden="true">R</span><span aria-hidden="true">D</span><span aria-hidden="true">I</span><span aria-hidden="true">N</span><span aria-hidden="true">A</span><span aria-hidden="true"></span><span aria-hidden="true">1</span><span aria-hidden="true">2</span>
+            </div>
 
-            <ul class="contact-list" aria-label="Contact details">
-              <li>
-                <strong>Mail:</strong>
-                <a href="mailto:info@thejard.eu">info@thejard.eu</a>
-              </li>
-              <li>
-                <strong>Tel:</strong>
-                <a href="tel:+393514096297">+39 351 409 6297</a>
-              </li>
-              <li>
-                <strong>Web:</strong>
-                <a href="https://www.thejard.eu">www.thejard.eu</a>
-              </li>
-              <li>
-                <strong>IG:</strong>
-                <a href="https://www.instagram.com/thejardgallery/">@thejardgallery</a>
-              </li>
-            </ul>
+            <div
+              class="spread-line details-line address-last"
+              style="--characters: 25"
+              aria-label="10023, CHIERI (TO), ITALY"
+            >
+              <span aria-hidden="true">1</span><span aria-hidden="true">0</span><span aria-hidden="true">0</span><span aria-hidden="true">2</span><span aria-hidden="true">3</span><span aria-hidden="true">,</span><span aria-hidden="true"></span><span aria-hidden="true">C</span><span aria-hidden="true">H</span><span aria-hidden="true">I</span><span aria-hidden="true">E</span><span aria-hidden="true">R</span><span aria-hidden="true">I</span><span aria-hidden="true"></span><span aria-hidden="true">(</span><span aria-hidden="true">T</span><span aria-hidden="true">O</span><span aria-hidden="true">)</span><span aria-hidden="true">,</span><span aria-hidden="true"></span><span aria-hidden="true">I</span><span aria-hidden="true">T</span><span aria-hidden="true">A</span><span aria-hidden="true">L</span><span aria-hidden="true">Y</span>
+            </div>
+
+            <a
+              class="spread-line details-line"
+              style="--characters: 21"
+              href="mailto:info@thejard.eu"
+              aria-label="Mail: info@thejard.eu"
+            >
+              <span class="label-character" aria-hidden="true">M</span><span class="label-character" aria-hidden="true">A</span><span class="label-character" aria-hidden="true">I</span><span class="label-character" aria-hidden="true">L</span><span class="label-character" aria-hidden="true">:</span><span aria-hidden="true"></span><span aria-hidden="true">I</span><span aria-hidden="true">N</span><span aria-hidden="true">F</span><span aria-hidden="true">O</span><span aria-hidden="true">@</span><span aria-hidden="true">T</span><span aria-hidden="true">H</span><span aria-hidden="true">E</span><span aria-hidden="true">J</span><span aria-hidden="true">A</span><span aria-hidden="true">R</span><span aria-hidden="true">D</span><span aria-hidden="true">.</span><span aria-hidden="true">E</span><span aria-hidden="true">U</span>
+            </a>
+
+            <a
+              class="spread-line details-line"
+              style="--characters: 19"
+              href="https://www.instagram.com/thejardgallery/"
+              aria-label="Instagram: @thejardgallery"
+            >
+              <span class="label-character" aria-hidden="true">I</span><span class="label-character" aria-hidden="true">G</span><span class="label-character" aria-hidden="true">:</span><span aria-hidden="true"></span><span aria-hidden="true">@</span><span aria-hidden="true">T</span><span aria-hidden="true">H</span><span aria-hidden="true">E</span><span aria-hidden="true">J</span><span aria-hidden="true">A</span><span aria-hidden="true">R</span><span aria-hidden="true">D</span><span aria-hidden="true">G</span><span aria-hidden="true">A</span><span aria-hidden="true">L</span><span aria-hidden="true">L</span><span aria-hidden="true">E</span><span aria-hidden="true">R</span><span aria-hidden="true">Y</span>
+            </a>
+
+            <a
+              class="spread-line details-line"
+              style="--characters: 21"
+              href="tel:+393514096297"
+              aria-label="Telephone: +39 351 409 6297"
+            >
+              <span class="label-character" aria-hidden="true">T</span><span class="label-character" aria-hidden="true">E</span><span class="label-character" aria-hidden="true">L</span><span class="label-character" aria-hidden="true">:</span><span aria-hidden="true"></span><span aria-hidden="true">+</span><span aria-hidden="true">3</span><span aria-hidden="true">9</span><span aria-hidden="true"></span><span aria-hidden="true">3</span><span aria-hidden="true">5</span><span aria-hidden="true">1</span><span aria-hidden="true"></span><span aria-hidden="true">4</span><span aria-hidden="true">0</span><span aria-hidden="true">9</span><span aria-hidden="true"></span><span aria-hidden="true">6</span><span aria-hidden="true">2</span><span aria-hidden="true">9</span><span aria-hidden="true">7</span>
+            </a>
+
+            <a
+              class="spread-line visit-booking"
+              href="https://www.google.com"
+              aria-label="Prenotazione visite / Book a Visit"
+            >
+              <span aria-hidden="true">PRENOTAZIONE</span>
+              <span aria-hidden="true">VISITE</span>
+              <span aria-hidden="true">/</span>
+              <span aria-hidden="true">BOOK</span>
+              <span aria-hidden="true">A</span>
+              <span aria-hidden="true">VISIT</span>
+            </a>
           </div>
         </div>
+
+        <h1
+          id="coming-soon-title"
+          class="spread-line coming-soon-title"
+          style="--characters: 11"
+          aria-label="Coming Soon"
+        >
+          <span aria-hidden="true">C</span>
+          <span aria-hidden="true">O</span>
+          <span aria-hidden="true">M</span>
+          <span aria-hidden="true">I</span>
+          <span aria-hidden="true">N</span>
+          <span aria-hidden="true">G</span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true">S</span>
+          <span aria-hidden="true">O</span>
+          <span aria-hidden="true">O</span>
+          <span aria-hidden="true">N</span>
+        </h1>
       </section>
     </main>
   </body>
