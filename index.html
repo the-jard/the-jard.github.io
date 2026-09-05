@@ -199,17 +199,20 @@
         }
 
         .details {
+          --mobile-logo-width: min(58vw, 15rem);
+          --mobile-logo-left-inset: min(3.91vw, 1.011rem);
           grid-template-columns: 1fr;
           gap: 2rem;
           width: min(100%, 31rem);
         }
 
         .logo {
-          width: min(58vw, 15rem);
+          width: var(--mobile-logo-width);
         }
 
         .details-copy {
-          width: min(100%, 25rem);
+          width: min(calc(100% - var(--mobile-logo-left-inset)), 25rem);
+          margin-left: var(--mobile-logo-left-inset);
           padding-top: 0;
           font-size: clamp(0.72rem, 3vw, 0.95rem);
         }
